@@ -1,68 +1,51 @@
-# CodeIgniter 4 Application Starter
+#  📽️ Web Presentation App - CodeIgniter
+Aplikasi ini dirancang untuk mengelola dan mempublikasikan tutorial presentasi dengan dukungan sistem autentikasi berbasis webservice serta fitur ekspor ke format PDF. Pengguna dapat masuk ke sistem, membuat tutorial, membagikannya secara publik melalui tautan, dan mengunduhnya sebagai dokumen PDF.
 
-## What is CodeIgniter?
+## ✨ Fitur Utama
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+- ✅ **Login via Webservice** (Email & Password)
+- ✅ **CRUD Master Tutorial** (Judul, deskripsi, dll.)
+- ✅ **CRUD Detail Tutorial** (Langkah-langkah, isi tutorial)
+- ✅ **Public Preview**: Tutorial dapat diakses publik via `url_presentation`
+- ✅ **PDF Export**: Cetak presentasi ke PDF via `url_finished`
+- ✅ **DataTable Dashboard**: Menampilkan data mata kuliah dari webservice
+- ✅ **Status Show/Hide** per detail tutorial
+- ✅ **Validasi URL Unik** untuk `presentation` & `finished`
+- ✅ **Webservice Server**: Menyediakan endpoint data untuk sistem eksternal
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## 🚀 Cara Menjalankan
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### 1. Clone & Install
+> git clone https://github.com/liliianaa/WebPresentationApp-PWL.git
+> cd WebPresentationApp-PWL
+> composer install
+> cp env .env
+> php spark key:generate
+> php spark serve
 
-## Installation & updates
+### 2. Setup Database
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+**Atur Koneksi database .env**
+- database.default.hostname = localhost
+- database.default.database = webpresentationapp
+- database.default.username = root
+- database.default.password =
+- database.default.DBDriver = MySQLi
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+**Jalankan Perintah Migrasi di terminal**
+php spark migrate
 
-## Setup
+## 🔐 Akun Login Webservice
+Gunakan akun berikut untuk login:
+- **Email** : [aprilyani.safitri@gmail.com](mailto:aprilyani.safitri@gmail.com)  
+- **Password** : `123456`
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## 🛠 Teknologi
+- ⚙️CodeIgniter 4
+- 🧾 Dompdf — Library PHP untuk generate file PDF dari HTML.
+- 🔐 JWT Webservice — Sistem autentikasi menggunakan JSON Web Token (melalui endpoint eksternal)
+- 🌐 HTTP Client CI4 — Untuk mengakses API/webservice dari dalam aplikasi.
+- 🗃️ MySQL / MariaDB — Sebagai database utama aplikasi.
+- 🎨 Bootstrap — Untuk tata letak dan antarmuka pengguna (jika digunakan).
 
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
