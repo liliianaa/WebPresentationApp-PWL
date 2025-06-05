@@ -25,6 +25,7 @@ class PresentationController extends BaseController
             $details = (new \App\Models\TutorialDetailModel())
                 ->where('tutorial_id', $tutorial['id'])
                 ->where('status', 'show')
+                ->orderBy('tutor_order', 'ASC')
                 ->findAll();
 
             return view('view/presentation', [
@@ -46,6 +47,7 @@ class PresentationController extends BaseController
         if ($tutorial) {
             $details = (new \App\Models\TutorialDetailModel())
                 ->where('tutorial_id', $tutorial['id'])
+                ->orderBy('tutor_order', 'ASC')
                 ->findAll();
 
             return view('view/finished', [
